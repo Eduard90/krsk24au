@@ -13,7 +13,7 @@
                 {{ forloop.counter }}
             </td>
             <td class="review-title">
-                {{ review }}
+                <a href="{{ review.link }}" target="_blank">{{ review }}</a>
             </td>
             <td>
                 <a href="{% url 'user' review.user_id %}" target="_blank">{{ review.user }}</a>
