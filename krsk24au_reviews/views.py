@@ -26,19 +26,20 @@ def detailsaboutday(request):
 def graph_for_period(request):
     if request.is_ajax():
         period = request.GET.get('period', None)
-        start_date = datetime.now() - timedelta(days=int(period))
+        default_period = 7;
+        if period.isdigit():
+            start_date = datetime.now() - timedelta(days=int(period))
+        else:
+            start_date = datetime.now() - timedelta(days=default_period)
 
         reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=start_date)
 
-        #reviews = Review.objects.all().filter(date_time__startswith=datetime.date(start_date))
         result = []
         for review in reviews:
            result.append({'count': review['count'], 'date': review['date_time'].strftime('%Y/%m/%d')})
 
         context = {'data': result}
 
-        # context = {'start_date': start_date.strftime('%Y-%m-%dT%H:%M:%S')}
         return HttpResponse(json.dumps(context), content_type="application/json")
-        #return render(request, 'krsk24au_reviews/ajax/graphForPeriod.html', context)
     else:
        return render(request, 'layout/ajaxAccessDeny.html')

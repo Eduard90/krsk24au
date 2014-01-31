@@ -10,14 +10,6 @@
                 data = [],
                 graph, i;
 
-{#            {% if reviews %}#}
-{#                var date = false;#}
-{#                {% for review in reviews|slice:":30" %}#}
-{#                    date = new Date("{{ review.date_time|date:"Y/m/d" }}");#}
-{#                    data.push([date, {{ review.count }}]);#}
-{#                {% endfor %}#}
-{#            {% endif %}#}
-
             $('#reviews_cnt tr').on('click', function(){
                 if ($('#detailsAboutDay').length)
                 {
@@ -64,6 +56,14 @@
             });
 
             $('select[name=period]').trigger('change');
+
+            $('input[name=period_from], input[name=period_to]').datepicker({
+                format: "dd.mm.yyyy",
+                clearBtn: true,
+                weekStart: 1,
+                todayHighlight: true,
+                language: 'ru',
+            });
         });
     </script>
 
@@ -86,12 +86,20 @@
         </div>
 
         <div id="selectPeriod">
+        <div>График:</div>
             <div class="col-xs-4">
                 <select name="period" class="form-control">
                     <option value="7">За неделю</option>
                     <option value="15">За 15 дней</option>
                     <option value="30">За 30 дней</option>
+                    <option value="60">За 60 дней</option>
                 </select>
+            </div>
+            <div class="col-xs-2">
+                <input type="text" class="form-control" name="period_from" placeholder="С">
+            </div>
+            <div class="col-xs-2">
+                <input type="text" class="form-control" name="period_to" placeholder="По">
             </div>
         </div>
 

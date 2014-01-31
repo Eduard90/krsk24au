@@ -64,6 +64,11 @@ $(document).ready(function(){
         {
             var ticks = data.length;
 
+            default_max = 100;
+            max = Math.max.apply(Math, data.map(function(o){return o[1];}));
+            if (max > default_max)
+                default_max = max;
+
             graph = Flotr.draw(container, [ {data:data, lines:{fill:true, show: true}, points: {show: true}, mouse: {track: true}} ], {
                 xaxis : {
                     noTicks : ticks,
@@ -73,7 +78,7 @@ $(document).ready(function(){
                 },
                 yaxis: {
                     min: 0,
-                    max: 100,
+                    max: default_max,
                 },
                 grid: {
                     minorVerticalLines: true
