@@ -1,0 +1,39 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Инфо о пользователе '{{ 24au_user }}'{% endblock %}
+
+
+{% block content %}
+<div class="user-info">
+    Пользователь:
+    <br>
+    <span class='user-name'>{{ 24au_user }}</span>
+</div>
+<div>
+Сделки:
+    {% if 24au_user.review_set %}
+        <table id="reviews">
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Дата</th>
+            </tr>
+            <tbody>
+                {% for review in 24au_user.review_set.all %}
+                    <tr>
+                        <td class="num">
+                            {{ forloop.counter }}
+                        </td>
+                        <td class="review-title">
+                            <a href='{{ review.link }}' class="review-link">{{ review }}</a>
+                        </td>
+                        <td>
+                            {{ review.date_time|date:"d.m.Y" }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

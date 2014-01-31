@@ -1,0 +1,36 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Поиск{% endblock %}
+{% block content %}
+<div>
+Сделки:
+    {% if reviews %}
+        <table id="reviews" class="table table-striped table-hover">
+            <tr>
+                <th>#</th>
+                <th>Юзер</th>
+                <th>Название</th>
+                <th>Дата</th>
+            </tr>
+            <tbody>
+                {% for review in reviews %}
+                    <tr>
+                        <td class="num">
+                            {{ forloop.counter }}
+                        </td>
+                        <td>
+                            <a href='{% url 'user' review.user_id %}'>{{ review.user }}</a>
+                        </td>
+                        <td class="review-title">
+                            <a href='{{ review.link }}' class="review-link">{{ review }}</a>
+                        </td>
+                        <td>
+                            {{ review.date_time|date:"d.m.Y" }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

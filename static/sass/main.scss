@@ -1,0 +1,125 @@
+$small_font: 10pt;
+$stand_font: 12pt;
+$big_font: 14pt;
+$bigbig_font: 16pt;
+$border-color: #BDBDBD;
+$border-color2: #383838;
+
+#main {
+    margin-top: 10px;
+}
+
+#logout_button {
+    line-height: 3;
+}
+
+#reviews_cnt {
+    width: 100%;
+    margin-top: 15px;
+    td {
+        height: 24px;
+        border: 1px $border-color solid;
+    }
+
+    tr {
+        cursor: pointer;
+    }
+}
+.modal-wide .modal-dialog { width: 800px; }
+
+#reviews_detail {
+    width: 100%;
+    margin-top: 5px;
+    a {
+        font-size: $small_font;
+    }
+
+    td {
+        padding: 3px;
+        height: 24px;
+        border: 1px $border-color solid;
+        font-size: $small_font;
+    }
+
+    td.review-title {
+        cursor: pointer;
+    }
+
+    td.num {
+      text-align: center;
+    }
+}
+
+#reviews {
+    width: 100%;
+    margin-top: 5px;
+    a {
+        font-size: $small_font;
+    }
+
+    td {
+        height: 24px;
+        border: 1px $border-color solid;
+    }
+
+    td.review-title {
+        padding-left: 5px;
+        cursor: pointer;
+    }
+
+    td.num {
+      text-align: center;
+    }
+}
+
+.user-info {
+    margin-bottom: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+div#search {
+  margin-bottom: 10px;
+}
+
+div#selectPeriod {
+    height: 40px;
+}
+
+
+@media (min-width: 992px) {
+    #left_menu {
+        position: fixed;
+        ul {
+            margin-top: 10px;
+            border: 1px $border-color dotted;
+            border-radius: 3px;
+
+
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    #search div {
+      width: 86%;
+    }
+
+    #left_menu {
+        ul {
+            li {
+              font-size: $bigbig_font;
+            }
+        }
+    }
+}
+
+
+iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 1px $border-color2 solid;
+}

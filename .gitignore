@@ -1,3 +1,7 @@
+.idea/
+.sass-cache/
+krsk24au/settings.py
+
 *.py[cod]
 
 # C extensions

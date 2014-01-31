@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+    {% if 24au_users %}
+        <ul>
+        {% for 24au_user in 24au_users %}
+            <li><a href="{% url 'user' 24au_user.id %}">{{ 24au_user }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
