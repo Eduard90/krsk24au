@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 15:15+0800\n"
+"POT-Creation-Date: 2014-01-31 19:07+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: krsk24au/settings.py:146
+#: krsk24au/settings.py:150
 msgid "English"
 msgstr "English"
 
-#: krsk24au/settings.py:147
+#: krsk24au/settings.py:151
 msgid "Russian"
 msgstr "Russian"
 
@@ -35,9 +35,17 @@ msgstr "Инфо о пользователе"
 msgid "Users"
 msgstr "Пользователи"
 
-#: krsk24au_main/templates/krsk24au_main/auth.html:2
+#: krsk24au_main/templates/krsk24au_main/auth.html:9
 msgid "Auth"
 msgstr "Авторизация"
+
+#: krsk24au_main/templates/krsk24au_main/auth.html:29
+msgid "Sign in"
+msgstr "Вход"
+
+#: krsk24au_main/templates/krsk24au_main/auth.html:44
+msgid "Login"
+msgstr "Войти"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:3
 #: krsk24au_search/templates/krsk24au_search/index.html:8
@@ -45,19 +53,23 @@ msgstr "Авторизация"
 msgid "Reviews"
 msgstr "Сделки"
 
-#: krsk24au_reviews/templates/krsk24au_reviews/index.html:77
+#: krsk24au_reviews/templates/krsk24au_reviews/index.html:105
 msgid "Detail information"
 msgstr "Детальная информация"
 
-#: krsk24au_reviews/templates/krsk24au_reviews/index.html:82
+#: krsk24au_reviews/templates/krsk24au_reviews/index.html:110
 msgid "Close"
 msgstr "Закрыть"
 
-#: krsk24au_reviews/templates/krsk24au_reviews/index.html:110
+#: krsk24au_reviews/templates/krsk24au_reviews/index.html:119
+msgid "Chart"
+msgstr "График"
+
+#: krsk24au_reviews/templates/krsk24au_reviews/index.html:149
 msgid "Count"
 msgstr "Кол-во"
 
-#: krsk24au_reviews/templates/krsk24au_reviews/index.html:111
+#: krsk24au_reviews/templates/krsk24au_reviews/index.html:150
 #: krsk24au_search/templates/krsk24au_search/index.html:15
 msgid "Date"
 msgstr "Дата"
