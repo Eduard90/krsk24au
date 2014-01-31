@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-29 05:16-0500\n"
+"POT-Creation-Date: 2014-01-31 14:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,18 +23,18 @@ msgstr ""
 msgid "Reviews"
 msgstr "Сделки"
 
-#: templates/krsk24au_reviews/index.html:79
+#: templates/krsk24au_reviews/index.html:77
 msgid "Detail information"
 msgstr "Детальная информация"
 
-#: templates/krsk24au_reviews/index.html:84
+#: templates/krsk24au_reviews/index.html:82
 msgid "Close"
 msgstr "Закрыть"
 
-#: templates/krsk24au_reviews/index.html:92
+#: templates/krsk24au_reviews/index.html:110
 msgid "Count"
 msgstr "Кол-во сделок"
 
-#: templates/krsk24au_reviews/index.html:93
+#: templates/krsk24au_reviews/index.html:111
 msgid "Date"
 msgstr "Дата"
