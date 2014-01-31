@@ -2,11 +2,13 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, request
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 from krsk24au_info.models import Review, User
 
 # Create your views here.
 
+@login_required
 def index(request):
     # template_name = 'krsk24au_search/index.html'
     # results = Review.objects.all()

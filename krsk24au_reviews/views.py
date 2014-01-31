@@ -3,16 +3,18 @@ from django.http import HttpResponse
 from krsk24au_info.models import Review, User
 from django.db.models import Count
 from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
 import json
 # Create your views here.
 
+@login_required
 def index(request):
     # request.session['django_language'] = "en"
     results = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time'))
     context = {'reviews': results}
     return render(request, 'krsk24au_reviews/index.html', context)
 
-
+@login_required
 def detailsaboutday(request):
     if request.is_ajax():
         date_str = request.POST.get('date', None)
@@ -23,16 +25,26 @@ def detailsaboutday(request):
     else:
        return render(request, 'layout/ajaxAccessDeny.html')
 
+@login_required
 def graph_for_period(request):
     if request.is_ajax():
-        period = request.GET.get('period', None)
+        period = request.GET.get('period', 0)
+        period_from = request.GET.get('period_from', 0)
+        period_to = request.GET.get('period_to', 0)
         default_period = 7;
-        if period.isdigit():
-            start_date = datetime.now() - timedelta(days=int(period))
-        else:
-            start_date = datetime.now() - timedelta(days=default_period)
 
-        reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=start_date)
+        if period != 0:
+            if period.isdigit():
+                start_date = datetime.now() - timedelta(days=int(period))
+            else:
+                start_date = datetime.now() - timedelta(days=default_period)
+
+            reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=start_date)
+        else:
+            if period_from != 0 and period_to != 0:
+                period_from = datetime.strptime(period_from, '%d.%m.%Y')
+                period_to = datetime.strptime(period_to, '%d.%m.%Y')
+                reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=period_from).filter(date_time__lte=period_to)
 
         result = []
         for review in reviews:

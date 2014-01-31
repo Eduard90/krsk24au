@@ -39,7 +39,6 @@
                     data: {period: period},
                     dataType: "json",
                     success: function(resp){
-
                         var container = document.getElementById('graph'),
                             data = [];
 
@@ -62,7 +61,36 @@
                 clearBtn: true,
                 weekStart: 1,
                 todayHighlight: true,
-                language: 'ru',
+                language: 'ru'
+            });
+
+            $('button#getData_btn').on('click', function(){
+
+                var period_from = $('input[name=period_from]').val();
+                var period_to   = $('input[name=period_to]').val();
+
+                if (period_from != '' && period_to != '')
+                {
+                    $.ajax({
+                        type: "GET",
+                        url: "/reviews/ajax/graphForPeriod",
+                        data: {period_from: period_from, period_to: period_to},
+                        dataType: "json",
+                        success: function(resp){
+                            var container = document.getElementById('graph'),
+                            data = [];
+
+                            length = resp.data.length;
+                            for (i = 0; i < length; i++)
+                            {
+                                date = new Date(resp.data[i].date);
+                                data.push([date, resp.data[i].count]);
+                            }
+
+                            createGraph(container, data);
+                        }
+                    });
+                }
             });
         });
     </script>
@@ -79,7 +107,7 @@
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
                     </div>
                 </div>
             </div>
@@ -105,6 +133,9 @@
                         </div>
                         <div class="col-xs-2">
                             <input type="text" class="form-control" name="period_to" placeholder="По">
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn btn-success" id="getData_btn" type="button">Получить</button>
                         </div>
                     </div>
 
