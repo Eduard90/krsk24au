@@ -1,16 +1,18 @@
 {% extends "layout/base.html" %}
+{% load i18n %}
 
-{% block title %}Поиск{% endblock %}
+{% block title %}{% trans "Search" %}{% endblock %}
+
 {% block content %}
 <div>
-Сделки:
+{% trans "Reviews" %}:
     {% if reviews %}
         <table id="reviews" class="table table-striped table-hover">
             <tr>
                 <th>#</th>
-                <th>Юзер</th>
-                <th>Название</th>
-                <th>Дата</th>
+                <th>{% trans "User" %}</th>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Date" %}</th>
             </tr>
             <tbody>
                 {% for review in reviews %}

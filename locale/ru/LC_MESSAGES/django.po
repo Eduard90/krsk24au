@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 14:40+0800\n"
+"POT-Creation-Date: 2014-01-31 15:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,28 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: krsk24au/settings.py:145
-msgid "English"
-msgstr ""
-
 #: krsk24au/settings.py:146
+msgid "English"
+msgstr "English"
+
+#: krsk24au/settings.py:147
 msgid "Russian"
-msgstr ""
+msgstr "Russian"
+
+#: krsk24au_info/templates/krsk24au_info/user.html:4
+msgid "Info about user"
+msgstr "Инфо о пользователе"
+
+#: krsk24au_info/templates/krsk24au_info/users.html:4
+msgid "Users"
+msgstr "Пользователи"
 
 #: krsk24au_main/templates/krsk24au_main/auth.html:2
 msgid "Auth"
 msgstr "Авторизация"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:3
+#: krsk24au_search/templates/krsk24au_search/index.html:8
 #: templates/layout/base.html:65
 msgid "Reviews"
 msgstr "Сделки"
@@ -49,17 +58,35 @@ msgid "Count"
 msgstr "Кол-во"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:111
+#: krsk24au_search/templates/krsk24au_search/index.html:15
 msgid "Date"
 msgstr "Дата"
 
+#: krsk24au_search/templates/krsk24au_search/index.html:4
 #: templates/layout/base.html:48
 msgid "Search"
 msgstr "Поиск"
 
-#: templates/layout/base.html:59 templates/layout/base.html.py:88
+#: krsk24au_search/templates/krsk24au_search/index.html:13
+msgid "User"
+msgstr "Пользователь"
+
+#: krsk24au_search/templates/krsk24au_search/index.html:14
+msgid "Title"
+msgstr "Название"
+
+#: templates/layout/base.html:8
+msgid "Main Page"
+msgstr "Главная"
+
+#: templates/layout/base.html:59 templates/layout/base.html.py:91
 msgid "Dashboard"
 msgstr "Панель управления"
 
 #: templates/layout/base.html:62
 msgid "By user"
 msgstr "По юзеру"
+
+#: templates/layout/base.html:68
+msgid "Logout"
+msgstr "Выйти"

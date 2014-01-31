@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 14:40+0800\n"
+"POT-Creation-Date: 2014-01-31 15:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,74 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: krsk24au/settings.py:145
-msgid "English"
-msgstr ""
-
 #: krsk24au/settings.py:146
+msgid "English"
+msgstr "English"
+
+#: krsk24au/settings.py:147
 msgid "Russian"
-msgstr ""
+msgstr "Russian"
+
+#: krsk24au_info/templates/krsk24au_info/user.html:4
+msgid "Info about user"
+msgstr "Info about user"
+
+#: krsk24au_info/templates/krsk24au_info/users.html:4
+msgid "Users"
+msgstr "Users"
 
 #: krsk24au_main/templates/krsk24au_main/auth.html:2
 msgid "Auth"
-msgstr ""
+msgstr "Auth"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:3
+#: krsk24au_search/templates/krsk24au_search/index.html:8
 #: templates/layout/base.html:65
 msgid "Reviews"
-msgstr ""
+msgstr "Reviews"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:77
 msgid "Detail information"
-msgstr ""
+msgstr "Detail information"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:82
 msgid "Close"
-msgstr ""
+msgstr "Close"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:110
 msgid "Count"
-msgstr ""
+msgstr "Count"
 
 #: krsk24au_reviews/templates/krsk24au_reviews/index.html:111
+#: krsk24au_search/templates/krsk24au_search/index.html:15
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
+#: krsk24au_search/templates/krsk24au_search/index.html:4
 #: templates/layout/base.html:48
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
-#: templates/layout/base.html:59 templates/layout/base.html.py:88
+#: krsk24au_search/templates/krsk24au_search/index.html:13
+msgid "User"
+msgstr "User"
+
+#: krsk24au_search/templates/krsk24au_search/index.html:14
+msgid "Title"
+msgstr "Title"
+
+#: templates/layout/base.html:8
+msgid "Main Page"
+msgstr "Main Page"
+
+#: templates/layout/base.html:59 templates/layout/base.html.py:91
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: templates/layout/base.html:62
 msgid "By user"
-msgstr ""
+msgstr "By user"
+
+#: templates/layout/base.html:68
+msgid "Logout"
+msgstr "Logout"

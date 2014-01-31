@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>24au.ru parser - {% block title %}Главная{% endblock %}</title>
+    <title>24au.ru parser - {% block title %}{% trans "Main Page" %}{% endblock %}</title>
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.css" %}" />
@@ -56,16 +56,16 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> {% trans 'Dashboard' %}</a>
+                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'users' %}"><i class="fa fa-users fa-fw"></i> {% trans 'By user' %}</a>
+                        <a href="{% url 'users' %}"><i class="fa fa-users fa-fw"></i> {% trans "By user" %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'reviews_index' %}"><i class="fa fa-comments fa-fw"></i> {% trans 'Reviews' %}</a>
+                        <a href="{% url 'reviews_index' %}"><i class="fa fa-comments fa-fw"></i> {% trans "Reviews" %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> {% trans 'Logout' %}</a>
+                        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> {% trans "Logout" %}</a>
                     </li>
 {#                    <li>#}
 {#                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>#}
@@ -88,7 +88,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">{% trans 'Dashboard' %}</h1>
+                    <h1 class="page-header">{% trans "Dashboard" %}</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

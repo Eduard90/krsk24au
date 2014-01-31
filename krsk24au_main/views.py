@@ -9,6 +9,7 @@ from django.contrib.auth import logout
 # Create your views here.
 @login_required
 def index(request):
+    # request.session['django_language'] = 'ru'
     if request.user.is_authenticated():
     # template_name = 'krsk24au_main/index.html'
        return render_to_response('krsk24au_main/index.html')

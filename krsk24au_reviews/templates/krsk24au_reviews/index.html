@@ -85,25 +85,33 @@
             </div>
         </div>
 
-        <div id="selectPeriod">
-        <div>График:</div>
-            <div class="col-xs-4">
-                <select name="period" class="form-control">
-                    <option value="7">За неделю</option>
-                    <option value="15">За 15 дней</option>
-                    <option value="30">За 30 дней</option>
-                    <option value="60">За 60 дней</option>
-                </select>
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" name="period_from" placeholder="С">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" name="period_to" placeholder="По">
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> {% trans 'Chart' %}
+                </div>
+                <div class="panel-body">
+                    <div id="selectPeriod">
+                        <div class="col-xs-4">
+                            <select name="period" class="form-control">
+                                <option value="7">За неделю</option>
+                                <option value="15">За 15 дней</option>
+                                <option value="30">За 30 дней</option>
+                                <option value="60">За 60 дней</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" class="form-control" name="period_from" placeholder="С">
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" class="form-control" name="period_to" placeholder="По">
+                        </div>
+                    </div>
+
+                    <div id="graph" style="width: 90%; height: 300px"></div>
+                </div>
             </div>
         </div>
-
-        <div id="graph" style="width: 90%; height: 300px"></div>
 
         <table id="reviews_cnt" class="table table-striped table-hover">
             <tr>
