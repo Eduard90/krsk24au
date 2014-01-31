@@ -19,9 +19,10 @@ class Review(models.Model):
         },
     )
     class Meta:
-        managed = False
-        db_table = 'review'
         ordering = ['-date_time']
+    #     managed = False
+    #     db_table = 'review'
+
 
     def __unicode__(self):
         return self.title
@@ -29,9 +30,9 @@ class Review(models.Model):
 class User(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
-    class Meta:
-        managed = False
-        db_table = 'user'
+    #class Meta:
+    #     managed = False
+    #     db_table = 'user'
 
     def __unicode__(self):
         return self.name
