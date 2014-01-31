@@ -42,31 +42,40 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+                        <form name="search" method="POST" action="{% url 'search_index' %}">
+                            {% csrf_token %}
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..." value="{{ search }}">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                         <!-- /input-group -->
                     </li>
                     <li>
                         <a href="/"><i class="fa fa-dashboard fa-fw"></i> {% trans 'Dashboard' %}</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="flot.html">Flot Charts</a>
-                            </li>
-                            <li>
-                                <a href="morris.html">Morris.js Charts</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="{% url 'users' %}"><i class="fa fa-users fa-fw"></i> {% trans 'By user' %}</a>
                     </li>
+                    <li>
+                        <a href="{% url 'reviews_index' %}"><i class="fa fa-comments fa-fw"></i> {% trans 'Reviews' %}</a>
+                    </li>
+{#                    <li>#}
+{#                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>#}
+{#                        <ul class="nav nav-second-level">#}
+{#                            <li>#}
+{#                                <a href="flot.html">Flot Charts</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="morris.html">Morris.js Charts</a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                        <!-- /.nav-second-level -->#}
+{#                    </li>#}
                 </ul>
                 <!-- /#side-menu -->
             </div>
@@ -82,15 +91,6 @@
             </div>
             <div class="row">
                 <div id="content" class="col-md-9">
-                    <div id="search">
-                        <form name="searchForm" action="/search/" method="POST">
-                            {% csrf_token %}
-                            <div class="col-xs-4">
-                                <input type="text" name="search" class="form-control input-sm" placeholder="Поиск..." value="{{ search }}">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Найти</button>
-                        </form>
-                    </div>
                     {% block content %}{% endblock %}
                 </div>
             </div>
