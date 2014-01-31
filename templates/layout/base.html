@@ -1,7 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>24au.ru parser - {% block title %}Главная{% endblock %}</title>
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     {% load staticfiles %}
@@ -9,6 +12,11 @@
     <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap-theme.css" %}" />
     <link rel="stylesheet" href="{% static "css/bootstrap/datepicker3.css" %}" />
     <link rel="stylesheet" href="{% static "css/main.css" %}" />
+
+    <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.css" %}" />
+    <link rel="stylesheet" href="{% static "css/plugins/morris/morris-0.4.3.min.css" %}" />
+    <link rel="stylesheet" href="{% static "css/sb-admin.css" %}" />
+
     <script src="{% static "js/bootstrap/bootstrap.js" %}" type="text/javascript"></script>
     <script src="{% static "js/bootstrap/bootstrap-datepicker.js" %}" type="text/javascript"></script>
     <script src="{% static "js/main.js" %}" type="text/javascript"></script>
@@ -16,30 +24,76 @@
 </head>
 
 <body>
-    <div id="main">
-        <div class="col-md-3"></div>
-        <div class="col-md-3" id="left_menu">
-            <ul>
-                <li><a href="{% url 'users' %}">По пользователям</a></li>
-                <li><a href="{% url 'reviews_index' %}">Сделки</a></li>
-                <li><a href="">По повторам</a></li>
-                <li><a href="">Уникальные</a></li>
-                <li><a href="{% url 'logout' %}" id="logout_button">Выйти</a></li>
-            </ul>
-
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">Krasnoyarsk 24AU.RU Parser</a>
         </div>
+    </nav>
 
-        <div id="content" class="col-md-9">
-            <div id="search">
-                <form name="searchForm" action="/search/" method="POST">
-                    {% csrf_token %}
-                    <div class="col-xs-4">
-                        <input type="text" name="search" class="form-control input-sm" placeholder="Поиск..." value="{{ search }}">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Найти</button>
-                </form>
+
+    <div id="main">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> {% trans 'Dashboard' %}</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="flot.html">Flot Charts</a>
+                            </li>
+                            <li>
+                                <a href="morris.html">Morris.js Charts</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+                <!-- /#side-menu -->
             </div>
-            {% block content %}{% endblock %}
+            <!-- /.sidebar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">{% trans 'Dashboard' %}</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div id="content" class="col-md-9">
+                    <div id="search">
+                        <form name="searchForm" action="/search/" method="POST">
+                            {% csrf_token %}
+                            <div class="col-xs-4">
+                                <input type="text" name="search" class="form-control input-sm" placeholder="Поиск..." value="{{ search }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Найти</button>
+                        </form>
+                    </div>
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
         </div>
     </div>
 </body>
