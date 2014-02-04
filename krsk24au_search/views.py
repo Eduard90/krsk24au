@@ -25,7 +25,7 @@ def index(request):
                ids.append(result.id)
 
             # results = Review.objects.filter(title__icontains='playstation').order_by('-date_time')
-            results = Review.objects.filter(pk__in=ids).order_by('-date_time')
+            results = Review.objects.filter(pk__in=ids).order_by('-date_time').select_related()
 
     context = {'reviews': results, 'search': search}
     return render(request, 'krsk24au_search/index.html', context)
