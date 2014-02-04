@@ -12,8 +12,9 @@ from django.template import RequestContext
 @login_required
 def index(request):
     # request.session['django_language'] = 'ru'
+    context_instance=RequestContext(request)
     if request.user.is_authenticated():
-       return render_to_response('krsk24au_main/index.html')
+       return render_to_response('krsk24au_main/index.html', {}, context_instance=RequestContext(request))
 
 # def auth(request):
 #     form = AuthenticationForm()
