@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Create your models here.
 class Review(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     uniq = models.CharField(max_length=40)
     good_id = models.IntegerField()
     user = models.ForeignKey('User')
@@ -18,6 +18,8 @@ class Review(models.Model):
             'title': 100,
         },
     )
+    user_name = models.CharField(max_length=50)
+
     class Meta:
         ordering = ['-date_time']
     #     managed = False
@@ -28,7 +30,7 @@ class Review(models.Model):
         return self.title
 
 class User(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     #class Meta:
     #     managed = False

@@ -119,23 +119,28 @@
                         <i class="fa fa-bar-chart-o fa-fw"></i> {% trans 'Chart' %}
                 </div>
                 <div class="panel-body">
-                    <div id="selectPeriod">
-                        <div class="col-xs-4">
-                            <select name="period" class="form-control">
-                                <option value="7">За неделю</option>
-                                <option value="15">За 15 дней</option>
-                                <option value="30">За 30 дней</option>
-                                <option value="60">За 60 дней</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-2">
-                            <input type="text" class="form-control" name="period_from" placeholder="С">
-                        </div>
-                        <div class="col-xs-2">
-                            <input type="text" class="form-control" name="period_to" placeholder="По">
-                        </div>
-                        <div class="col-xs-2">
-                            <button class="btn btn-success" id="getData_btn" type="button">Получить</button>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-4">
+                                <div id="selectPeriod">
+                                    <select name="period" class="form-control">
+                                        <option value="7">За неделю</option>
+                                        <option value="15">За 15 дней</option>
+                                        <option value="30">За 30 дней</option>
+                                        <option value="60">За 60 дней</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="period_from" placeholder="С">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="period_to" placeholder="По">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-success" id="getData_btn" type="button">Получить</button>
+                            </div>
                         </div>
                     </div>
 

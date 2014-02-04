@@ -25,6 +25,7 @@ def detailsaboutday(request):
     else:
        return render(request, 'layout/ajaxAccessDeny.html')
 
+#FIXME: Error when select period. First element - count error :(
 @login_required
 def graph_for_period(request):
     if request.is_ajax():
@@ -39,7 +40,7 @@ def graph_for_period(request):
             else:
                 start_date = datetime.now() - timedelta(days=default_period)
 
-            reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=start_date)
+            reviews = Review.objects.filter(date_time__gt=start_date).extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time'))
         else:
             if period_from != 0 and period_to != 0:
                 period_from = datetime.strptime(period_from, '%d.%m.%Y')
