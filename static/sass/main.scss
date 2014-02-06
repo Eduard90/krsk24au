@@ -85,7 +85,9 @@ div#search {
 }
 
 div#selectPeriod {
-    height: 50px;
+    > div > div {
+      height: 50px;
+    }
 }
 
 

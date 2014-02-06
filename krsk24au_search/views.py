@@ -12,7 +12,6 @@ from krsk24au_info.models import Review, User
 def index(request):
     # template_name = 'krsk24au_search/index.html'
     # results = Review.objects.all()
-    #results = Review.objects.all().filter(title__contains='playstation')
     results = 0
     search = ""
     if request.method == 'POST':

@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'krsk24au.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'krsk24au_main/auth.html'}),
     url(r'^accounts/logout/$', 'krsk24au_main.views.logoutview', name='logout'),
     # url(r'^accounts/login/$', 'krsk24au_main.views.loginview', name='login'),

@@ -51,7 +51,7 @@
 div#search {
   margin-bottom: 10px; }
 
-div#selectPeriod {
+div#selectPeriod > div > div {
   height: 50px; }
 
 @media (min-width: 992px) {
