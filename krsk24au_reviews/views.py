@@ -32,20 +32,42 @@ def graph_for_period(request):
         period = request.GET.get('period', 0)
         period_from = request.GET.get('period_from', 0)
         period_to = request.GET.get('period_to', 0)
+        user_id = request.GET.get('user_id', 0)
         default_period = 7;
 
         if period != 0:
             if period.isdigit():
-                start_date = datetime.now() - timedelta(days=int(period))
+                start_date = datetime.now().date() - timedelta(days=int(period))
             else:
-                start_date = datetime.now() - timedelta(days=default_period)
+                start_date = datetime.now().date() - timedelta(days=default_period)
 
-            reviews = Review.objects.filter(date_time__gt=start_date).extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time'))
+            kwargs = {
+                'date_time__gt': start_date
+            }
+
+            #Store selected period in session
+            request.session['period'] = period;
+
+            if user_id:
+                kwargs['user_id'] = user_id;
+                #Store selected period for this user in session
+                request.session['period_user_%s' % user_id] = period;
+
+            reviews = Review.objects.filter(**kwargs).extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time'))
         else:
             if period_from != 0 and period_to != 0:
                 period_from = datetime.strptime(period_from, '%d.%m.%Y')
                 period_to = datetime.strptime(period_to, '%d.%m.%Y')
-                reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=period_from).filter(date_time__lte=period_to)
+                kwargs = {
+                    'date_time__gte': period_from,
+                    'date_time__lte': period_to
+                }
+
+                if user_id:
+                    kwargs['user_id'] = user_id;
+
+                # reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(date_time__gte=period_from).filter(date_time__lte=period_to)
+                reviews = Review.objects.extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time')).filter(**kwargs)
 
         result = []
         for review in reviews:

@@ -58,13 +58,14 @@ $(document).ready(function(){
 
 })
 
-    function createGraph(container, data)
+    function createSellsGraph(container, data, default_max)
     {
         if ($(container).length)
         {
             var ticks = data.length;
 
-            default_max = 100;
+            if(typeof(default_max)==='undefined') default_max = 100;
+
             max = Math.max.apply(Math, data.map(function(o){return o[1];}));
             if (max > default_max)
                 default_max = max;
@@ -74,11 +75,11 @@ $(document).ready(function(){
                     noTicks : ticks,
                     mode: "time",
                     timeFormat : '%d.%m.%y',
-                    labelsAngle : 45,
+                    labelsAngle : 45
                 },
                 yaxis: {
                     min: 0,
-                    max: default_max,
+                    max: default_max
                 },
                 grid: {
                     minorVerticalLines: true

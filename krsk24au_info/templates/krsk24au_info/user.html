@@ -5,11 +5,127 @@
 
 
 {% block content %}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Get data for graph
+        $('select[name=period]').on('change', function(){
+            var period = $(this).val();
+            var user_id = {{ 24au_user.id }};
+            $.ajax({
+                type: "GET",
+                url: "/reviews/ajax/graphForPeriod",
+                data: {period: period, user_id: user_id},
+                dataType: "json",
+                success: function(resp){
+                    var container = document.getElementById('graph'),
+                        data = [];
+
+                    length = resp.data.length;
+                    for (i = 0; i < length; i++)
+                    {
+                        date = new Date(resp.data[i].date);
+                        data.push([date, resp.data[i].count]);
+                    }
+
+                    createSellsGraph(container, data, 20);
+                }
+            });
+        });
+        $('select[name=period]').trigger('change');
+
+        //Create calendar
+        $('input[name=period_from], input[name=period_to]').datepicker({
+                format: "dd.mm.yyyy",
+                clearBtn: true,
+                weekStart: 1,
+                todayHighlight: true,
+                language: 'ru'
+        });
+
+        $('button#getData_btn').on('click', function(){
+
+            var period_from = $('input[name=period_from]').val();
+            var period_to   = $('input[name=period_to]').val();
+            var user_id = {{ 24au_user.id }};
+
+            if (period_from != '' && period_to != '')
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "/reviews/ajax/graphForPeriod",
+                    data: {period_from: period_from, period_to: period_to, user_id: user_id},
+                    dataType: "json",
+                    success: function(resp){
+                        var container = document.getElementById('graph'),
+                        data = [];
+
+                        length = resp.data.length;
+                        for (i = 0; i < length; i++)
+                        {
+                            date = new Date(resp.data[i].date);
+                            data.push([date, resp.data[i].count]);
+                        }
+
+                        createSellsGraph(container, data, 20);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+{#{% load dict_get %}#}
+{#{% with user_id=24au_user.id|stringformat:"s" %}#}
+{#    {% with period_key="period_user_"|add:user_id %}#}
+{#        {% with request.session|key:period_key as period %}#}
+{##}
+{#        {% endwith %}#}
+{#    {% endwith %}#}
+{#{% endwith %}#}
+
 <div class="user-info">
     Пользователь:
     <br>
     <span class='user-name'>{{ 24au_user }}</span>
 </div>
+
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> {% trans 'Chart' %}
+        </div>
+        <div class="panel-body">
+            <div class="row" id="selectPeriod">
+                <div class="col-sm-12">
+                    <div class="col-sm-4">
+                        <div>
+                            <select name="period" class="form-control">
+                                <option value="7" {% if period_user == '7' %}selected{% endif %}>За неделю</option>
+                                <option value="15" {% if period_user == '15' %}selected{% endif %}>За 15 дней</option>
+                                <option value="30" {% if period_user == '30' %}selected{% endif %}>За 30 дней</option>
+                                <option value="60" {% if period_user == '60' %}selected{% endif %}>За 60 дней</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="period_from" placeholder="С">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="period_to" placeholder="По">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success" id="getData_btn" type="button">Получить</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="graph" style="width: 90%; height: 300px"></div>
+        </div>
+    </div>
+</div>
+
 <div>
 Сделки:
     {% if 24au_user.review_set %}

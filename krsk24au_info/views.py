@@ -16,19 +16,26 @@ class UsersView(generic.ListView):
     context_object_name = '24au_users'
 
     def get_queryset(self):
-        return User.objects.order_by('name').all();
+        return User.objects.order_by('name').all()
+
+    def get_context_data(self, **kwargs):
+        context = super(UsersView, self).get_context_data(**kwargs)
+        return context
 
 class UserView(generic.DetailView):
     template_name = 'krsk24au_info/user.html'
     context_object_name = '24au_user'
     model = User
 
+    def get_context_data(self, **kwargs):
+        context = super(UserView, self).get_context_data(**kwargs)
+        au_user_id = kwargs['object'].id
+        key = 'period_user_%s' % au_user_id
 
+        if key in self.request.session:
+            context['period_user'] = self.request.session[key]
 
-    # def get_object(self):
-    #     return get_object_or_404(User)
-    # def get_queryset(self):
-    #     return User.objects.get()
+        return context
 
 # class IndexView(generic.ListView):
 #     template_name = 'krsk24au_info/index.html'
