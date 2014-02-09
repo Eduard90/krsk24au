@@ -90,6 +90,15 @@ div#selectPeriod {
     }
 }
 
+table#new_users {
+    tr.buyer {
+        background-color: #67b168;
+    }
+    tr.seller {
+        background-color: #d2322d;
+    }
+}
+
 
 @media (min-width: 992px) {
     #left_menu {

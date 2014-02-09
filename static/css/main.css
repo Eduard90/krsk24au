@@ -54,6 +54,11 @@ div#search {
 div#selectPeriod > div > div {
   height: 50px; }
 
+table#new_users tr.buyer {
+  background-color: #67b168; }
+table#new_users tr.seller {
+  background-color: #d2322d; }
+
 @media (min-width: 992px) {
   #left_menu {
     position: fixed; }
