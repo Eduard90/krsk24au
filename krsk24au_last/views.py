@@ -20,7 +20,9 @@ class AllNewUsersView(generic.ListView):
         if self.request.method == 'GET':
             last_search = self.request.GET.get('last_search', None)
 
-        context['last_search'] = last_search
+        if last_search != None:
+            context['last_search'] = last_search
+
         return context
 
     def get_queryset(self):
