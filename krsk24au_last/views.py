@@ -29,7 +29,7 @@ class AllNewUsersView(generic.ListView):
         last_search = ""
 
         kwargs = {
-            'count__gt': 2,
+            'count__gte': 2,
         }
 
         if self.request.method == 'GET':
