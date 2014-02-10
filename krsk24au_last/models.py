@@ -1,4 +1,5 @@
 from django.db import models
+from djangosphinx.models import SphinxSearch
 
 # Create your models here.
 class NewReview(models.Model):
@@ -13,7 +14,12 @@ class NewReview(models.Model):
     date_time = models.DateTimeField()
     seller_user_name = models.CharField(max_length=50)
     buyer_user_name = models.CharField(max_length=50)
-
+    search = SphinxSearch(
+        index='last_review',
+        weights={
+            'title': 100,
+        },
+    )
     # class Meta:
         # ordering = ['-date_time']
     #     managed = False

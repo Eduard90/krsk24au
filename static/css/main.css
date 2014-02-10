@@ -54,6 +54,9 @@ div#search {
 div#selectPeriod > div > div {
   height: 50px; }
 
+form[name='search_last'] {
+  padding-bottom: 10px; }
+
 table#new_users tr.buyer {
   background-color: #67b168; }
 table#new_users tr.seller {
