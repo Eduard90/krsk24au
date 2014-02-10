@@ -13,18 +13,28 @@ class AllNewUsersView(generic.ListView):
     template_name = 'krsk24au_last/index.html'
     context_object_name = '24au_new_users'
 
+    def get_context_data(self, **kwargs):
+        context = super(AllNewUsersView, self).get_context_data(**kwargs)
+
+        last_search = ""
+        if self.request.method == 'GET':
+            last_search = self.request.GET.get('last_search', None)
+
+        context['last_search'] = last_search
+        return context
+
     def get_queryset(self):
-        search = ""
+        last_search = ""
 
         kwargs = {
             'count__gt': 2,
         }
 
         if self.request.method == 'GET':
-            search = self.request.GET.get('search', None)
+            last_search = self.request.GET.get('last_search', None)
 
-        if search:
-            resultsSphinx = NewReview.search.query(search)
+        if last_search:
+            resultsSphinx = NewReview.search.query(last_search)
             resultsSphinx = resultsSphinx[0:resultsSphinx.count()]
             ids = []
             for result in resultsSphinx:

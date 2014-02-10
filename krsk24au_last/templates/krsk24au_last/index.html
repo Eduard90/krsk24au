@@ -22,7 +22,7 @@
             <form name="search_last" method="GET" action="{% url 'newusers_index' %}">
                 {% csrf_token %}
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" name="search" placeholder="{% trans 'Search' %}..." value="{{ search }}">
+                    <input type="text" class="form-control" name="last_search" placeholder="{% trans 'Search' %}..." value="{{ last_search }}">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                             <i class="fa fa-search"></i>
