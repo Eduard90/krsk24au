@@ -36,9 +36,9 @@ def graph_for_period(request):
 
         if period != 0:
             if period.isdigit():
-                start_date = datetime.now() - timedelta(days=int(period))
+                start_date = datetime.now().date() - timedelta(days=int(period))
             else:
-                start_date = datetime.now() - timedelta(days=default_period)
+                start_date = datetime.now().date() - timedelta(days=default_period)
 
             reviews = Review.objects.filter(date_time__gt=start_date).extra({'date_time' : "date(date_time)"}).values('date_time').annotate(count=Count('date_time'))
         else:
