@@ -26,8 +26,4 @@ class AllNewUsersView(generic.ListView):
             else:
                 users[buyer['buyer_user_name']] = {'buyes': buyer['count']}
 
-
-        logging.info(users)
-
-        new_users = NewReview.objects.all()
         return users
