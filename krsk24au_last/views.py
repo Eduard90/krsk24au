@@ -14,8 +14,8 @@ class AllNewUsersView(generic.ListView):
     context_object_name = '24au_new_users'
 
     def get_queryset(self):
-        sellers = NewReview.objects.values('seller_user_name').annotate(count=Count('seller_user_name'))
-        buyers = NewReview.objects.values('buyer_user_name').annotate(count=Count('buyer_user_name'))
+        sellers = NewReview.objects.values('seller_user_name').annotate(count=Count('seller_user_name')).filter(count__gt=2).all()
+        buyers = NewReview.objects.values('buyer_user_name').annotate(count=Count('buyer_user_name')).filter(count__gt=2).all()
         users = {}
         for seller in sellers:
             users[seller['seller_user_name']] = {'sells': seller['count']}
