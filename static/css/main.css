@@ -54,6 +54,16 @@ div#search {
 div#selectPeriod > div > div {
   height: 50px; }
 
+form[name='search_last'] {
+  padding-bottom: 10px; }
+
+table#new_users tr.buyer {
+  background-color: #67b168; }
+table#new_users tr.seller {
+  background-color: #d2322d; }
+table#new_users td a.name {
+  color: #282828; }
+
 @media (min-width: 992px) {
   #left_menu {
     position: fixed; }

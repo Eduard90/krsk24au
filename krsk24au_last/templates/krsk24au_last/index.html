@@ -1,0 +1,60 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+{% load i18n %}
+    <script>
+        $(document).ready(function(){
+
+            if ($('#new_users').length)
+            {
+                $('#new_users').dataTable({
+                    "aaSorting": [[2, 'desc']],
+                    "aLengthMenu": [ 10, 25, 50, 100, 200],
+                    "iDisplayLength": 100,
+                });
+            }
+
+        });
+    </script>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form name="search_last" method="GET" action="{% url 'newusers_index' %}">
+                {% csrf_token %}
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" name="last_search" placeholder="{% trans 'Search' %}..." value="{{ last_search }}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if 24au_new_users %}
+        <table id="new_users" class="table">
+        <thead>
+            <tr>
+                <th>Пользователь</th>
+                <th>Продаж</th>
+                <th>Покупок</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for 24au_new_user, value in 24au_new_users.items %}
+                {% if value.sells > value.buyes %}
+                <tr class="seller">
+                {% else %}
+                <tr class="buyer">
+                {% endif %}
+                    <td><a href='http://24au.ru/reviews/{{ 24au_new_user }}' class="name" target="_blank">{{ 24au_new_user }}</a></td>
+                    <td>{{ value.sells }}</td>
+                    <td>{{ value.buyes }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

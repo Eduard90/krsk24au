@@ -19,6 +19,8 @@
 
     <script src="{% static "js/bootstrap/bootstrap.js" %}" type="text/javascript"></script>
     <script src="{% static "js/bootstrap/bootstrap-datepicker.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/plugins/dataTables/jquery.dataTables.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/plugins/dataTables/dataTables.bootstrap.js" %}" type="text/javascript"></script>
     <script src="{% static "js/main.js" %}" type="text/javascript"></script>
     <script src="{% static "js/flotr2.js" %}" type="text/javascript"></script>
 </head>
@@ -63,6 +65,9 @@
                     </li>
                     <li>
                         <a href="{% url 'reviews_index' %}"><i class="fa fa-comments fa-fw"></i> {% trans "Reviews" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'newusers_index' %}"><i class="fa fa-comments fa-fw"></i> {% trans "Last Reviews" %}</a>
                     </li>
                     <li>
                         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> {% trans "Logout" %}</a>

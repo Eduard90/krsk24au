@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r'^user/', include('krsk24au_info.urls')),
     url(r'^search/', include('krsk24au_search.urls')),
     url(r'^reviews/', include('krsk24au_reviews.urls')),
+    url(r'^lastreviews/', include('krsk24au_last.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
